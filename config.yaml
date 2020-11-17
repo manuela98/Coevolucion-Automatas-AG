@@ -11,9 +11,9 @@ mutation_rate: 0.01
 # simulation settings
 pop_size: 200
 num_breeders: 100
-num_generations: 400
+num_generations: 1000
 iterations_per_simulation: 100
-moves_per_iteration: 200
+moves_per_iteration: 300
 
 # coevolution 
 not_your_can: -2.5
