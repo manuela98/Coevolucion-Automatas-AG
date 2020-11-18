@@ -12,7 +12,7 @@ no_rub_penalty = config['no_rub_penalty'] # fitness points deducted for trying t
 rubbish_score = config['rubbish_score'] # fitness points awarded for picking up rubbish
 mutation_rate = config['mutation_rate'] # probability of a gene mutating
 no_your_can  = config['not_your_can'] # penalty for pick up a can that is not yours
-
+they_collide = config['they_collide']
 class Environment:
     """
     Class for representing a grid environment full of rubbish. Each cell can be:
@@ -120,13 +120,14 @@ class Robot:
             
 class Coevolution:
     
-    def __init__(self, robot_one, robot_two, penalty_can=no_your_can,w_pen=wall_penalty, nr_pen=no_rub_penalty, r_score=rubbish_score):
+    def __init__(self, robot_one, robot_two, penalty_can=no_your_can,w_pen=wall_penalty, nr_pen=no_rub_penalty, r_score=rubbish_score, they_collide= they_collide):
         self.robot_one = robot_one
         self.robot_two = robot_two
         self.penalty_can = penalty_can 
         self.wall_penalty = wall_penalty
         self.no_rub_penalty = no_rub_penalty
         self.rubbish_score = rubbish_score
+        self.they_collide = they_collide
     
      
     def simulate(self, n_iterations, n_moves, debug=False):
@@ -149,8 +150,8 @@ class Coevolution:
                 self.act()
                 # if they collide 
                 if self.robot_one.i==self.robot_two.i and self.robot_one.j==self.robot_two.j:
-                    self.robot_one.score += self.wall_penalty
-                    self.robot_two.score += self.wall_penalty                   
+                    self.robot_one.score +=  self.they_collide
+                    self.robot_two.score +=  self.they_collide                  
             tot_score_robot_one += self.robot_one.score
             tot_score_robot_two += self.robot_two.score
             if debug:
