@@ -69,7 +69,7 @@ for i in tqdm(range(num_gen)):
 
     pop_one = new_pop_one
     pop_two = new_pop_two
-file = open('output_1.txt','a')
+file = open('output_2.txt','a')
 file.write(str(results_one)+'\n')
 file.write(str(results_two)+'\n')
 file.write(str(best_robot_one.dna)+'\n')
