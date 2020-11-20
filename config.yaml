@@ -16,8 +16,8 @@ iterations_per_simulation: 100
 moves_per_iteration: 250
 
 # coevolution 
-not_your_can: -0.5
-they_collide: -2
+not_your_can: 0
+they_collide: 0
 
 
 # benchmark strategy
