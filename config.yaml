@@ -13,11 +13,15 @@ pop_size: 200
 num_breeders: 100
 num_generations: 500
 iterations_per_simulation: 100
-moves_per_iteration: 250
+moves_per_iteration: 200
 
 # coevolution 
 not_your_can: 0
 they_collide: 0
+not_your_can_robot_one: -0.5
+not_your_can_robot_two: -0.6
+they_collide_robot_one: -0.7
+they_collide_robot_two: -0.8
 
 
 # benchmark strategy
