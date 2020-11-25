@@ -16,13 +16,12 @@ iterations_per_simulation: 100
 moves_per_iteration: 200
 
 # coevolution 
-not_your_can: 0
-they_collide: 0
 not_your_can_robot_one: -0.5
 not_your_can_robot_two: -0.6
 they_collide_robot_one: -0.7
 they_collide_robot_two: -0.8
-
+system_robot_one: 0.1 
+system_robot_two: 0.1
 
 # benchmark strategy
 # move away from walls, always pickup rubbish, move towards rubbish

@@ -20,21 +20,25 @@ pop_one = [Robot() for x in range(pop_size)]
 pop_two = [Robot() for x in range(pop_size)]
 results_one = []
 results_two = []
+results_system = []
 
 # run evolution
 for i in tqdm(range(num_gen)):
     scores_one = np.zeros(pop_size)
     scores_two = np.zeros(pop_size)
+    scores_system = np.zeros(pop_size)
     # iterate through all robots
     for idx in range(len(pop_one)):
     # run rubbish collection simulation and calculate fitness
         coevolution = Coevolution(pop_one[idx],pop_two[idx])
-        score_one,score_two = coevolution.simulate(iter_per_sim, moves_per_iter)
+        score_one,score_two,system = coevolution.simulate(iter_per_sim, moves_per_iter)
         scores_one[idx] = score_one
         scores_two[idx] = score_two
+        scores_system[idx] = system
   
     results_one.append([scores_one.mean(),scores_one.max()]) # save mean and max scores for each generation
     results_two.append([scores_two.mean(),scores_two.max()]) # save mean and max scores for each generation
+    results_system.append([scores_system.mean(),scores_system.max()]) # save mean and max scores for each generation
     print(scores_one.max(),scores_two.max())
     best_robot_one = pop_one[scores_one.argmax()] # save the best robot
     best_robot_two = pop_two[scores_two.argmax()] # save the best robot
@@ -69,9 +73,10 @@ for i in tqdm(range(num_gen)):
 
     pop_one = new_pop_one
     pop_two = new_pop_two
-file = open('output_4.txt','a')
+file = open('output_5.txt','a')
 file.write(str(results_one)+'\n')
 file.write(str(results_two)+'\n')
+file.write(str(results_system)+'\n')
 file.write(str(best_robot_one.dna)+'\n')
 file.write(str(best_robot_two.dna)+'\n')
 coevolution =  Coevolution(best_robot_one,best_robot_two)

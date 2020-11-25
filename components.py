@@ -11,12 +11,12 @@ wall_penalty = config['wall_penalty'] # fitness points deducted for crashing int
 no_rub_penalty = config['no_rub_penalty'] # fitness points deducted for trying to pickup rubbish in empty square
 rubbish_score = config['rubbish_score'] # fitness points awarded for picking up rubbish
 mutation_rate = config['mutation_rate'] # probability of a gene mutating
-no_your_can  = config['not_your_can'] # penalty for pick up a can that is not yours
-they_collide = config['they_collide']
 no_your_can_robot_one  = config['not_your_can_robot_one'] # penalty for pick up a can that is not yours
 they_collide_robot_one = config['they_collide_robot_one']
 no_your_can_robot_two  = config['not_your_can_robot_two'] # penalty for pick up a can that is not yours
 they_collide_robot_two = config['they_collide_robot_two']
+system_robot_one = config['system_robot_one']
+system_robot_two = config['system_robot_two']
 class Environment:
     """
     Class for representing a grid environment full of rubbish. Each cell can be:
@@ -124,19 +124,18 @@ class Robot:
             
 class Coevolution:
     
-    def __init__(self, robot_one, robot_two, penalty_can=no_your_can,w_pen=wall_penalty, nr_pen=no_rub_penalty, r_score=rubbish_score, they_collide= they_collide,they_collide_one =they_collide_robot_one , they_collide_two=they_collide_robot_two ,penalty_can_one=no_your_can_robot_one, penalty_can_two=no_your_can_robot_two ):
+    def __init__(self, robot_one, robot_two, w_pen=wall_penalty, nr_pen=no_rub_penalty, r_score=rubbish_score,they_collide_one =they_collide_robot_one , they_collide_two=they_collide_robot_two ,penalty_can_one=no_your_can_robot_one, penalty_can_two=no_your_can_robot_two, st_one = system_robot_one, st_two=system_robot_two ):
         self.robot_one = robot_one
         self.robot_two = robot_two 
-        self.wall_penalty = wall_penalty
-        self.no_rub_penalty = no_rub_penalty
-        self.rubbish_score = rubbish_score
-        self.they_collide = they_collide
-        self.penalty_can = penalty_can
+        self.wall_penalty = w_pen
+        self.no_rub_penalty = nr_pen
+        self.rubbish_score = r_score
         self.they_collide_robot_one = they_collide_one
         self.penalty_can_robot_one = penalty_can_one
         self.they_collide_robot_two = they_collide_two
         self.penalty_can_robot_two = penalty_can_two
-        
+        self.system_robot_one = st_one 
+        self.system_robot_two = st_two
     
      
     def simulate(self, n_iterations, n_moves, debug=False):
@@ -170,7 +169,13 @@ class Coevolution:
                 self.envir.show_grid()
                 print('score robot one:',self.robot_one.score)
                 print('score robot two:',self.robot_two.score)
-        return tot_score_robot_one / n_iterations ,tot_score_robot_two / n_iterations   # average fitness score across n iterations,   
+        score_final_one =  tot_score_robot_one / n_iterations
+        score_final_two = tot_score_robot_two / n_iterations
+        system_score =  score_final_one + score_final_two
+        score_final_one_system = score_final_one + self.system_robot_one* system_score
+        score_final_two_system = score_final_two + self.system_robot_two* system_score
+        return score_final_one_system, score_final_two_system, system_score   # average fitness score across n iterations,  
+    
     def act(self):
         # perform action based on DNA and robot situation
         post_str_robot_one = self.envir.get_pos_string(self.robot_one.i, self.robot_one.j) # robot's current situation
