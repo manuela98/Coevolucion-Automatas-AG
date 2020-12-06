@@ -9,6 +9,6 @@ tqdm
 # Configuración  
 La configuración de las variables se realiza en el archivo ´config.yaml´, se pueden podificar los valores de la cuadrícula, de evolución, de simulación y de coevolución, además de un adn útil para la comparación del rendimiento en cada experimento.
 # Uso
-1. Clonar el repositorio ´git clone https://github.com/manuela98/Coevolucion-Automatas-AG.git´  
-2. Configurar y ejecutar en el símbolo del sistema o terminal ´python main.py´
+1. Clonar el repositorio ```git clone https://github.com/manuela98/Coevolucion-Automatas-AG.git```  
+2. Configurar y ejecutar en el símbolo del sistema o terminal ```python main.py```
 El uso de otras características se explican en el cuadernillo de jupyter.
