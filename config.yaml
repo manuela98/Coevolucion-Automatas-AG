@@ -15,13 +15,13 @@ num_generations: 500
 iterations_per_simulation: 100
 moves_per_iteration: 200
 
-# coevolution 
-not_your_can_robot_one: -0.5
-not_your_can_robot_two: -0.6
-they_collide_robot_one: -0.7
-they_collide_robot_two: -0.8
-system_robot_one: 0.15
-system_robot_two: -0.15
+# coevolution settings
+not_your_can_robot_A: -0.5
+not_your_can_robot_B: -0.6
+they_collide_robot_A: -0.7
+they_collide_robot_B: -0.8
+system_robot_A: 0.15
+system_robot_B: -0.15
 
 # benchmark strategy
 # move away from walls, always pickup rubbish, move towards rubbish

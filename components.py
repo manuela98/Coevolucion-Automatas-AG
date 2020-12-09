@@ -11,12 +11,13 @@ wall_penalty = config['wall_penalty'] # fitness points deducted for crashing int
 no_rub_penalty = config['no_rub_penalty'] # fitness points deducted for trying to pickup rubbish in empty square
 rubbish_score = config['rubbish_score'] # fitness points awarded for picking up rubbish
 mutation_rate = config['mutation_rate'] # probability of a gene mutating
-no_your_can_robot_one  = config['not_your_can_robot_one'] # penalty for pick up a can that is not yours
-they_collide_robot_one = config['they_collide_robot_one']
-no_your_can_robot_two  = config['not_your_can_robot_two'] # penalty for pick up a can that is not yours
-they_collide_robot_two = config['they_collide_robot_two']
-system_robot_one = config['system_robot_one']
-system_robot_two = config['system_robot_two']
+no_your_can_robot_one  = config['not_your_can_robot_A'] # penalty for pick up a can that is not yours
+they_collide_robot_one = config['they_collide_robot_A']
+no_your_can_robot_two  = config['not_your_can_robot_B'] # penalty for pick up a can that is not yours
+they_collide_robot_two = config['they_collide_robot_B']
+system_robot_one = config['system_robot_A']
+system_robot_two = config['system_robot_B']
+
 class Environment:
     """
     Class for representing a grid environment full of rubbish. Each cell can be:
@@ -117,10 +118,7 @@ class Robot:
                 mix_dna = mix_dna[:i] + str(np.random.randint(7)) + mix_dna[i+1:]
 
         return mix_dna
-
-   
-
-
+    
             
 class Coevolution:
     
