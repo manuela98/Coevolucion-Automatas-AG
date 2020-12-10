@@ -8,7 +8,7 @@ import time
 import pandas as pd
 
 
-st.markdown("<h1 style='text-align: center; color: black;'>JANITOR ROBOTS</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>Robots Conserjes</h1>", unsafe_allow_html=True)
 
 # better matrix
 robby_matrix = np.loadtxt('better_robby_matrix.txt', dtype=int)
@@ -65,10 +65,6 @@ fname='robot_75.png'
 img = mgimg.imread(fname)
 rotated_robby = ndimage.rotate(img, 180)
 imobj = ax.imshow(rotated_robby,extent=[800+12.5, 800+img.shape[1]+12.5, 125, 200], zorder=0)
-the_plot = st.pyplot(plt)
-
-
-
 fname='robot_2_75.png'
 img = mgimg.imread(fname)
 rotated_robby = ndimage.rotate(img, 180)
@@ -205,7 +201,7 @@ horizonral = 0
     animate(i)
     time.sleep(0.2)'''
 # Traductor
-st.markdown("<h3 style='text-align: center; color: black;'>Robot Situation</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: black;'>Estrategia Robot A</h3>", unsafe_allow_html=True)
 dict = {0:'North',
         1:'East',
         2: 'West',
